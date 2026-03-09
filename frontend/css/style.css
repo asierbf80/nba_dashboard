@@ -1,0 +1,347 @@
+@charset "UTF-8";
+/* =========================================
+   1. VARIABLES Y RESET GLOBALES
+   ========================================= */
+/* Fondo súper oscuro profesional */
+/* Tarjetas ligeramente más claras */
+/* Tu rosa neón */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0f;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 30px 20px;
+  color: #ececec;
+  min-height: 100vh;
+}
+
+/* Subrayado en la búsqueda */
+mark {
+  background-color: #FF10F0;
+  color: #fff;
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* =========================================
+   2. CONTENEDORES Y BUSCADOR
+   ========================================= */
+#buscador {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto 40px auto;
+  padding: 16px 24px;
+  border-radius: 30px;
+  border: 1px solid #333;
+  background-color: #111;
+  color: white;
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+#buscador:focus {
+  border-color: #FF10F0;
+  box-shadow: 0 0 20px rgba(255, 16, 240, 0.2);
+}
+
+/* Contenedor principal sin Grid para no romper los títulos */
+#tablero-jugadores {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cabecera-vista {
+  margin-bottom: 30px;
+}
+.cabecera-vista .titulo-vista {
+  font-size: 2rem;
+  color: white;
+  margin-top: 10px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #FF10F0;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.cabecera-vista .btn-volver {
+  color: #FF10F0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 5px;
+}
+.cabecera-vista .btn-volver:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   3. GRID Y TARJETAS DE JUGADORES
+   ========================================= */
+.grid-jugadores {
+  display: grid;
+  gap: 25px;
+  /* CRÍTICO: auto-fill evita que LeBron se vuelva gigante */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: start;
+}
+
+.jugador-card {
+  background-color: #15151e;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #2a2a35;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.jugador-card:hover {
+  transform: translateY(-5px);
+  border-color: #FF10F0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.jugador-card {
+  /* Nombre y Posición */
+}
+.jugador-card .cabecera-card {
+  margin-bottom: 15px;
+}
+.jugador-card .cabecera-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+  color: white;
+  letter-spacing: -0.5px;
+}
+.jugador-card .cabecera-card .posicion-tag {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888899;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.jugador-card {
+  /* Foto del jugador */
+}
+.jugador-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  object-position: bottom;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   4. HISTORIAL Y ESTADÍSTICAS AVANZADAS
+   ========================================= */
+.caja-stats-principal {
+  background-color: #1a1a24;
+  border-left: 4px solid #FF10F0;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 0 8px 8px 0;
+  border: 1px solid #2a2a35;
+  border-left-width: 4px;
+}
+.caja-stats-principal h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.caja-stats-principal .etapas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.caja-stats-principal .etapa-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed #333;
+  padding-bottom: 12px;
+}
+.caja-stats-principal .etapa-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.caja-stats-principal .etapa-item .etapa-equipo {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.caja-stats-principal .etapa-item {
+  /* La micro-cuadrícula con los stats */
+}
+.caja-stats-principal .etapa-item .etapa-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+  gap: 6px;
+}
+.caja-stats-principal .etapa-item .etapa-stats-grid span {
+  background-color: #111;
+  padding: 8px 4px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #222;
+  color: #888899;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column; /* Pone el icono arriba y el número abajo */
+  gap: 4px;
+}
+.caja-stats-principal .etapa-item .etapa-stats-grid span strong {
+  color: #FF10F0;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   5. TOTALES DE LA TEMPORADA (Footer de Tarjeta)
+   ========================================= */
+.stats-container {
+  margin-top: auto; /* Empuja los totales al final de la tarjeta */
+}
+.stats-container h4 {
+  color: #FF10F0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #333;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+.stats-container .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.stats-container .stats-grid p {
+  margin: 0;
+  background-color: #111;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #222;
+  font-size: 0.85rem;
+  color: #888899;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stats-container .stats-grid p strong {
+  color: white;
+  font-size: 1rem;
+}
+
+/* =========================================
+   6. TOOLTIPS (Los recuadros flotantes)
+   ========================================= */
+.stat-tooltip {
+  position: relative;
+  cursor: help;
+}
+.stat-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  width: 220px;
+  white-space: normal; /* CRÍTICO: Permite saltos de línea */
+  text-align: center;
+  line-height: 1.4;
+  border: 1px solid #FF10F0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+.stat-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: 105%;
+}
+
+/* =========================================
+   7. VISTA INICIAL DE EQUIPOS
+   ========================================= */
+.bloque-conferencia {
+  margin-bottom: 50px;
+}
+.bloque-conferencia .titulo-conferencia {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  border-bottom: 2px solid #FF10F0;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+.bloque-conferencia .divisiones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.bloque-division {
+  background-color: #15151e;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #2a2a35;
+}
+.bloque-division .titulo-division {
+  color: #888899;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #444;
+  padding-bottom: 8px;
+}
+.bloque-division .equipos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tarjeta-equipo-mini {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: #111;
+  border: 1px solid #222;
+}
+.tarjeta-equipo-mini:hover {
+  background-color: #222;
+  transform: translateX(5px);
+  border-color: #FF10F0;
+  box-shadow: -4px 0px 0px #FF10F0;
+}
+.tarjeta-equipo-mini .logo-equipo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+.tarjeta-equipo-mini span {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=style.css.map */
