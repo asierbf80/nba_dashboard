@@ -5,7 +5,9 @@ import rutasJugadores from './routes/jugadores.routes.js';
 import cors from 'cors';
 
 const app = express();
-app.use(cors()); // Al usarlo ahora sin subir la web a producción puede entrar to kiski, cuando lo subamos, pasaremos opciones para que 
+app.use(cors({
+  origin: 'https://nba-dashboard-azure.vercel.app/'
+})); // Al usarlo ahora sin subir la web a producción puede entrar to kiski, cuando lo subamos, pasaremos opciones para que 
 // sólo deje entrar al dominio oficial.
 const PORT = 3000;
 const urlBaseDatos = process.env.MONGO_URI;
