@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/jugadores';
+const API_URL = 'https://nba-backend-reuc.onrender.com/';
 // --- EL DICCIONARIO MAESTRO DE LA NBA ---
 const INFO_EQUIPOS = {
     "ATLANTA HAWKS": { conf: "Este", div: "Sureste", logo: "https://a.espncdn.com/i/teamlogos/nba/500/atl.png" },
